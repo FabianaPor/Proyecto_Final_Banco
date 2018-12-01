@@ -16,16 +16,20 @@ public class Auto extends Vehiculo implements Runnable {
 
     public Auto() {
     }
+    
 
     public Auto(String numMotor, int cilindraje, String marca, String modelo, int anio, String tipoVehiculo) {
         super(marca, modelo, anio, tipoVehiculo);
         this.numMotor = numMotor;
         this.cilindraje = cilindraje;
+        
     }    
     
     @Override
     public void run(){
         System.out.print(toString()+ " ");
+        Multihilos datos = new Multihilos();
+    
         super.datos();
     }
     

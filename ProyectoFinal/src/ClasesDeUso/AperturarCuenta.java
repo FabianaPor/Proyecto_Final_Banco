@@ -1,8 +1,4 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ClasesDeUso;
 
 import java.io.BufferedReader;
@@ -22,6 +18,9 @@ public class AperturarCuenta {
     //objetos
     private Cliente Obclientes;
     private Beneficiario ObBeneficiarios = new Beneficiario();
+    private ArrayList<Cliente> Aclientes = new ArrayList<Cliente>();
+    private ArrayList<Cuenta> ArCuentas = new ArrayList<Cuenta>();
+    static ArrayList<Thread> Hilos = new ArrayList<Thread>();
     //protected Cuenta numeroCuenta = new Cuenta();
     protected Cuenta cuentas = new Cuenta();
     //protected Cuenta Descripcion = new Cuenta();
@@ -38,10 +37,30 @@ public class AperturarCuenta {
     protected String lugarDeTrabajo;
     protected double salarioPromedio;
     protected int validarCuenta;
+    protected int Monto=0;
     
     protected String sucursales;
     
     public void Menu(Scanner entrada, BufferedReader Renglon) throws IOException {
+        int cuentaOpc;
+      
+        System.out.println("Ya tiene cuenta activa:"
+                + "\n 1) Si"
+                + "\n 2) No"
+                + "\n 3) Salir de Apertura de cuenta");
+        do {
+            
+            cuentaOpc = entrada.nextInt();
+            if (cuentaOpc < 1 || cuentaOpc > 3) {
+                System.out.println("Ingrese un numero entre 1 y 3");
+            }
+        } while (cuentaOpc < 1 || cuentaOpc > 3);
+        OpcionCuentas(cuentaOpc, entrada, Datos, Renglon);
+        
+    }
+    
+    
+    public void MenuAutomatico(Scanner entrada, BufferedReader Renglon) throws IOException {
         int cuentaOpc;
         System.out.println("Ya tiene cuenta activa:"
                 + "\n 1) Si"
@@ -89,6 +108,7 @@ public class AperturarCuenta {
             #telefono
          */
     }
+    
     
     private void AbriCuentaNoExistente(Scanner entrada, String Datos, BufferedReader Renglon) throws IOException {
         
@@ -185,11 +205,17 @@ public class AperturarCuenta {
         sucursales = Datos1;
         //sucursales = entrada.next();
         validarCuenta = 1;
+        Monto = 1500;
+        ArCuentas.add(cuentas);
+        System.out.println("****** Los datos del primer cliente es:  " + ArCuentas.get(0).getNumeroCuenta());
+
+        
         
 
         //Creando el cliente nuevo. 
         Obclientes = new Cliente(
-                nombreCompleto, cuentas,
+                nombreCompleto,
+                ArCuentas,
                 fechaNacimiento,
                 genero,
                 estadoCivil,
@@ -197,7 +223,9 @@ public class AperturarCuenta {
                 direccion,
                 lugarDeTrabajo,
                 salarioPromedio,
-                sucursales, validarCuenta);
+                validarCuenta, 
+                Monto, 
+                sucursales);
 
         /*
         System.out.println("1)------: " + Arrclientes.size());
@@ -211,10 +239,14 @@ public class AperturarCuenta {
             genero
             fecha de nacimiento
             #telefono
-         */
+         
         System.out.println("Imprimiendo la informacion recien agregada: ");
         System.out.println("********************************************************");
-        System.out.println(Obclientes.toString());
+        System.out.println(Obclientes.toString());*/
+        
+        Hilos.add(Obclientes);
+        Aclientes.add((Cliente) Hilos.get(0));
+     
         
         System.out.println("Entrando a Cuenta No existente.");
         //Datos = entrada.next();
@@ -225,7 +257,7 @@ public class AperturarCuenta {
         //Creando el numero de cuento
         System.out.println("Ingrese el numero de cliente: \n");
         //numeroCuenta = NumeroDeCuenta();
-        cuentas.setNumeroCuenta("000000000000");
+        cuentas.setNumeroCuenta(NumeroDeCuenta());
 
         //*****************************
         //Introduciendo la fecha
@@ -305,13 +337,19 @@ public class AperturarCuenta {
         System.out.println("Ingrese La sucursal donde abrira la cuenta");
         Datos1 = "Intibuca";
         sucursales = Datos1;
-        //sucursales = entrada.next();
+
 
         validarCuenta = 0;
+        Monto = 100;
+        ArCuentas.add(cuentas);
+
         
+        
+
         //Creando el cliente nuevo. 
         Obclientes = new Cliente(
-                nombreCompleto, cuentas,
+                nombreCompleto,
+                ArCuentas,
                 fechaNacimiento,
                 genero,
                 estadoCivil,
@@ -319,8 +357,10 @@ public class AperturarCuenta {
                 direccion,
                 lugarDeTrabajo,
                 salarioPromedio,
-                sucursales, validarCuenta);
-
+                validarCuenta, 
+                Monto, 
+                sucursales);
+        
         /*
         System.out.println("1)------: " + Arrclientes.size());
         System.out.println("------------------------------------------------------------");
@@ -337,6 +377,17 @@ public class AperturarCuenta {
         System.out.println("Imprimiendo la informacion recien agregada: ");
         System.out.println("********************************************************");
         System.out.println(Obclientes.toString());
+        System.out.println(Obclientes.toString());
+        System.out.println(Obclientes.toString());
+        System.out.println(Obclientes.toString());
+        System.out.println(cuentas.getNumeroCuenta());
+        System.out.println("****** Los datos del primer cliente es:  " + ArCuentas.get(1).getNumeroCuenta());
+        Hilos.add(Obclientes);
+        Aclientes.add((Cliente) Hilos.get(1));
+       
+         //return Hilos;
+  
+        
     }
     
     private String NumeroDeCuenta() {
@@ -428,6 +479,23 @@ public class AperturarCuenta {
         Informacion = Renglon.readLine();
         
         return Informacion;
+    }
+    public String ConseguirCuenta(String Conseguir, String NumeroCuenta){
+        for(int I=0; I<2; I++){
+        Aclientes.add((Cliente) Hilos.get(I));
+         System.out.println("-----");
+       // Conseguir = Aclientes.get(I).getCuentas().getNumeroCuenta();
+         Conseguir = Aclientes.get(I).getAcuentas().get(I).getNumeroCuenta();
+            System.out.println("La variable Conseguir es: " + Conseguir );
+            System.out.println("La variable NumeroCuenta es: " + NumeroCuenta );
+            System.out.println(Aclientes.get(I));
+            if (NumeroCuenta.equals(Conseguir)){
+                System.out.println("*************************************************");
+            return Conseguir;
+            }
+        }
+        Conseguir = "Cuenta no encontrada";
+        return Conseguir;
     }
     
 }

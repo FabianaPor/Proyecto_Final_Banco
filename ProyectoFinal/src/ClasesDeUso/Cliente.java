@@ -1,11 +1,13 @@
-
 package ClasesDeUso;
 
+import java.util.ArrayList;
 
 public class Cliente extends Thread {
+
     private String nombreCompleto;
-    private Cuenta cuentas;
-   // private Cuenta numeroCuenta;
+   // private Cuenta cuentas;
+    private ArrayList<Cuenta> Acuentas;
+    // private Cuenta numeroCuenta;
     private String fechaNacimiento;
     private char genero;
     private String estadoCivil;
@@ -14,13 +16,18 @@ public class Cliente extends Thread {
     private String lugarDeTrabajo;
     private double salarioPromedio;
     private int validarCuenta;
-  //  private Cuenta Descripcion;
-  //  private ArrayList<Beneficiario> beneficiarios;
+    private int Monto;
+    //  private Cuenta Descripcion;
+    //  private ArrayList<Beneficiario> beneficiarios;
     private String sucursales;
 
-    public Cliente(
-            String nombreCompleto, 
-            Cuenta cuentas, 
+    @Override
+    public String toString() {
+        return "Cliente{" + "nombreCompleto=" + nombreCompleto + ", Acuentas=" + Acuentas + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", telefono=" + telefono + ", direccion=" + direccion + ", lugarDeTrabajo=" + lugarDeTrabajo + ", salarioPromedio=" + salarioPromedio + ", validarCuenta=" + validarCuenta + ", Monto=" + Monto + ", sucursales=" + sucursales + '}';
+    }
+
+    public Cliente(String nombreCompleto, 
+            ArrayList<Cuenta> Acuentas, 
             String fechaNacimiento, 
             char genero, 
             String estadoCivil, 
@@ -28,10 +35,11 @@ public class Cliente extends Thread {
             String direccion, 
             String lugarDeTrabajo, 
             double salarioPromedio, 
-            String sucursales, int validarCuenta
-            ) {
+            int validarCuenta, 
+            int Monto, 
+            String sucursales) {
         this.nombreCompleto = nombreCompleto;
-        this.cuentas = cuentas;
+        this.Acuentas = Acuentas;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
         this.estadoCivil = estadoCivil;
@@ -39,14 +47,14 @@ public class Cliente extends Thread {
         this.direccion = direccion;
         this.lugarDeTrabajo = lugarDeTrabajo;
         this.salarioPromedio = salarioPromedio;
-        this.sucursales = sucursales;
         this.validarCuenta = validarCuenta;
+        this.Monto = Monto;
+        this.sucursales = sucursales;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" + "nombreCompleto=" + getNombreCompleto() + ", cuentas=" + getCuentas() + ", fechaNacimiento=" + getFechaNacimiento() + ", genero=" + getGenero() + ", estadoCivil=" + getEstadoCivil() + ", telefono=" + getTelefono() + ", direccion=" + getDireccion() + ", lugarDeTrabajo=" + getLugarDeTrabajo() + ", salarioPromedio=" + getSalarioPromedio() + ", validarCuenta=" + getValidarCuenta() + ", sucursales=" + getSucursales() + '}';
-    }
+    /**
+     * @return the nombreCompleto
+     */
     public String getNombreCompleto() {
         return nombreCompleto;
     }
@@ -59,17 +67,17 @@ public class Cliente extends Thread {
     }
 
     /**
-     * @return the cuentas
+     * @return the Acuentas
      */
-    public Cuenta getCuentas() {
-        return cuentas;
+    public ArrayList<Cuenta> getAcuentas() {
+        return Acuentas;
     }
 
     /**
-     * @param cuentas the cuentas to set
+     * @param Acuentas the Acuentas to set
      */
-    public void setCuentas(Cuenta cuentas) {
-        this.cuentas = cuentas;
+    public void setAcuentas(ArrayList<Cuenta> Acuentas) {
+        this.Acuentas = Acuentas;
     }
 
     /**
@@ -185,6 +193,20 @@ public class Cliente extends Thread {
     }
 
     /**
+     * @return the Monto
+     */
+    public int getMonto() {
+        return Monto;
+    }
+
+    /**
+     * @param Monto the Monto to set
+     */
+    public void setMonto(int Monto) {
+        this.Monto = Monto;
+    }
+
+    /**
      * @return the sucursales
      */
     public String getSucursales() {
@@ -198,4 +220,5 @@ public class Cliente extends Thread {
         this.sucursales = sucursales;
     }
 
+   
 }

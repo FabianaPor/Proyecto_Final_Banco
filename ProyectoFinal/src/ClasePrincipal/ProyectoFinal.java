@@ -6,6 +6,7 @@
 package ClasePrincipal;
 
 import ClasesDeUso.AperturarCuenta;
+import ClasesDeUso.RetiroDeEfectivo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,6 +40,7 @@ public class ProyectoFinal {
             
             //Objetos
             AperturarCuenta OBJapertura = new AperturarCuenta();
+            RetiroDeEfectivo ObjRetiro = new RetiroDeEfectivo();
             
             //varios
             String TIPOCUENTA = "AHORRO";
@@ -56,7 +58,7 @@ public class ProyectoFinal {
         
         do{
         
-        opcion = 1;
+        opcion = 2;
         //opcion = entrada.nextInt();
         if(opcion < 1 || opcion > 7){
             System.out.println("Ingrese una opcion entre 1 y 7");
@@ -70,6 +72,8 @@ public class ProyectoFinal {
                 break;
             case 2:
                 //Retiro de efectivo
+                OBJapertura.MenuAutomatico(entrada, Renglon);//Creando los clientes de forma automatica
+                ObjRetiro.Retirar(entrada, Renglon);
                 break;
             case 3:
                 //Deposito de cuenta Bancaria
@@ -87,7 +91,6 @@ public class ProyectoFinal {
                 //Salir
                 System.out.println("Ha salido del Sistema ;)");
                 break;
-            
         }
         
     }
