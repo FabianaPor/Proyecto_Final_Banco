@@ -4,10 +4,13 @@
  */
 package servidorsocket;
 
+import ClasesDeUso.Empleado;
+import empleadosocket.EmpleadoHilo;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +22,8 @@ public class ServidorHilo extends Thread {
     private ObjectOutputStream salidaDatos;
     private ObjectInputStream entradaDatos;
     private int idSession;
+    ArrayList<EmpleadoHilo> EmpleadosRetornados = new ArrayList<EmpleadoHilo>();
+    EmpleadoHilo Empleados = new EmpleadoHilo();
 
     public ServidorHilo(Socket socket, int id) {
         this.socket = socket;   //se asigna el socket creada y enviado como parametro
@@ -35,6 +40,13 @@ public class ServidorHilo extends Thread {
         }
     }
 
+    public ServidorHilo() {
+    }
+
+    public ServidorHilo(ArrayList<Empleado> ArEmpleados, String mensajeRespuesta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private void procesarConexion() throws IOException {
         String mensaje = "";
 
@@ -42,31 +54,27 @@ public class ServidorHilo extends Thread {
         do {
             try {
                 mensaje = (String) entradaDatos.readObject();//leer el mensaje que ha enviado el cliente
-
+               
+                
                 switch (mensaje) {
-                    case "TERMINAR":
-                        enviarMensaje("TERMINAR");
+                    case "1501":
+                        enviarMensaje("Encontrado");
                         break;
-                    case "Hola":
+                    case "1801":
                         //mostrar en la consola del servidor, el mensaje que envia el cliente
-                        mostrarMensaje("El cliente con idSesion " + this.idSession + " saluda"
-                                + " y el mensaje es: " + mensaje);
-                        enviarMensaje("Hola");
+                        enviarMensaje("Encontrado");
+                        
                         break;
-                    case "como estas":
-                        enviarMensaje("Bien y tu");
-                        mensaje = (String) entradaDatos.readObject();
-                        switch (mensaje) {
-                            case "bien":
-                                enviarMensaje("Cual es tu nombre");
-                                break;
-                            default:
-                                enviarMensaje("Mensaje invalido");
-                                break;
-                        }
+                    case "0914":
+                        enviarMensaje("Encontrado");
+                        
+                        break;
+                    case "1890":
+                        enviarMensaje("Encontrado");
+                        
                         break;
                     default:
-                        enviarMensaje("No reconozco el mensaje");  //enviar un mensaje deseado al cliente                        
+                        enviarMensaje("No-reconozco-el-mensaje");  //enviar un mensaje deseado al cliente                        
                         break;
                 }
             } // atrapar problemas que pueden ocurrir al tratar de leer del cliente
@@ -74,7 +82,7 @@ public class ServidorHilo extends Thread {
                 mostrarMensaje("\nSe recibio un tipo de objeto desconocido, el error es: "
                         + excepcionClaseNoEncontrada.toString());
             }
-        } while (!mensaje.equals("TERMINAR")); //procesar la conexion siempre que el cliente no envíe 
+        } while (!mensaje.equals("Encontrado")); //procesar la conexion siempre que el cliente no envíe 
         //el mensaje de terminar
         mostrarMensaje("FIN DEL CICLO SERVIDOR PARA EL CLIENTE CON ID DE SESION: " + this.idSession);
     }
@@ -117,4 +125,5 @@ public class ServidorHilo extends Thread {
             desconnectar(); // Paso 4: cerrar la conexion
         }
     }
+
 }

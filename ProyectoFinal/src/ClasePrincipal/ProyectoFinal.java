@@ -18,13 +18,13 @@ import java.util.Scanner;
  * @author Magally Portillo
  */
 public class ProyectoFinal {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-        //Objetos para introducir datos
+        // TODO code application logic here     
+   }
+
+    public void Ejecutar() throws IOException {
+            
+            //Entrada de teclado
             Scanner entrada = new Scanner(System.in);
             BufferedReader Renglon = new BufferedReader(new InputStreamReader(System.in));
 
@@ -37,8 +37,7 @@ public class ProyectoFinal {
             
             //ArrayLis
             ArrayList<AperturarCuenta> Arrapertura = new ArrayList<AperturarCuenta>();
-            
-            //Objetos
+             //Objetos
             AperturarCuenta OBJapertura = new AperturarCuenta();
             RetiroDeEfectivo ObjRetiro = new RetiroDeEfectivo();
             
@@ -46,6 +45,7 @@ public class ProyectoFinal {
             String TIPOCUENTA = "AHORRO";
             
     //menu
+    
         System.out.println("Selecciones lo que desea hacer "
                 + "\n 1) Apertura de Cuenta Bancaria"
                 + "\n 2) Retiro de efectivo"
@@ -55,8 +55,7 @@ public class ProyectoFinal {
                 + "\n 6) Imprimir información de clientes"
                 + "\n 7) Salir");
         System.out.println("");
-        
-        do{
+   do{
         
         opcion = 2;
         //opcion = entrada.nextInt();
@@ -93,6 +92,8 @@ public class ProyectoFinal {
                 break;
         }
         
+            
     }
+  }
     
-}
+
