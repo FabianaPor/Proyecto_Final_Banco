@@ -6,7 +6,7 @@ public class Cliente extends Thread {
 
     private String nombreCompleto;
    // private Cuenta cuentas;
-    private ArrayList<Cuenta> Acuentas;
+ private ArrayList<Cuenta> Acuentas;
     // private Cuenta numeroCuenta;
     private String fechaNacimiento;
     private char genero;
@@ -27,7 +27,7 @@ public class Cliente extends Thread {
     }
 
     public Cliente(String nombreCompleto, 
-            ArrayList<Cuenta> Acuentas, 
+            
             String fechaNacimiento, 
             char genero, 
             String estadoCivil, 
@@ -39,7 +39,7 @@ public class Cliente extends Thread {
             int Monto, 
             String sucursales) {
         this.nombreCompleto = nombreCompleto;
-        this.Acuentas = Acuentas;
+      
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
         this.estadoCivil = estadoCivil;

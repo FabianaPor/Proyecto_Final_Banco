@@ -6,6 +6,7 @@
 package ClasePrincipal;
 
 import ClasesDeUso.AperturarCuenta;
+import ClasesDeUso.CrearCliente;
 import ClasesDeUso.RetiroDeEfectivo;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,10 +20,11 @@ import java.util.Scanner;
  */
 public class ProyectoFinal {
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here     
+        // TODO code application logic here   
+        Ejecutar();
    }
 
-    public void Ejecutar() throws IOException {
+    public static  void Ejecutar() throws IOException {
             
             //Entrada de teclado
             Scanner entrada = new Scanner(System.in);
@@ -31,7 +33,8 @@ public class ProyectoFinal {
             
             //Variables
             int opcion;
-            int almacenador;
+            String almacenador = "1";
+            String RETORNADO;
             
             //Clases
             
@@ -40,6 +43,7 @@ public class ProyectoFinal {
              //Objetos
             AperturarCuenta OBJapertura = new AperturarCuenta();
             RetiroDeEfectivo ObjRetiro = new RetiroDeEfectivo();
+            CrearCliente crearClientes = new CrearCliente();
             
             //varios
             String TIPOCUENTA = "AHORRO";
@@ -67,12 +71,12 @@ public class ProyectoFinal {
         switch(opcion){
             case 1:
                 //apertura de cuenta bancaria
-                OBJapertura.Menu(entrada, Renglon);
+                RETORNADO = crearClientes.CrearClientes(almacenador);
                 break;
             case 2:
                 //Retiro de efectivo
-                OBJapertura.MenuAutomatico(entrada, Renglon);//Creando los clientes de forma automatica
-                ObjRetiro.Retirar(entrada, Renglon);
+                RETORNADO = crearClientes.CrearClientes(almacenador);//Creando los clientes de forma automatica
+                ObjRetiro.Retirar(entrada, Renglon, crearClientes);
                 break;
             case 3:
                 //Deposito de cuenta Bancaria

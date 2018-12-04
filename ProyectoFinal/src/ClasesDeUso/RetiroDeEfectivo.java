@@ -9,18 +9,22 @@ import java.io.BufferedReader;
 import java.util.Scanner;
 
   
-public class RetiroDeEfectivo {
+public class RetiroDeEfectivo extends CrearCliente{
    
-    AperturarCuenta clientes = new AperturarCuenta();
+    
     protected String almacenar;
     protected String Conseguir;
     protected String NumeroCuenta="139785249872";
     
-    public void Retirar(Scanner entrada, BufferedReader Renglon){
+    public void Retirar(Scanner entrada, BufferedReader Renglon,CrearCliente crearClientes){
+        
+        boolean verificar;
         System.out.println("Ingrese su numero de cuenta para retirar: "
                 + "\n-----------> ");
         //NumeroCuenta = entrada.next();
-        if(Verificarcuenta()==true){
+        verificar = Verificarcuenta(crearClientes);
+       
+        if(verificar==true){
             System.out.println("Si existe la cuenta");
         }else{
             System.out.println("Cuenta no existente");
@@ -28,16 +32,15 @@ public class RetiroDeEfectivo {
     
     }
     
+    
    
-    public boolean Verificarcuenta(){        
-        almacenar = clientes.ConseguirCuenta(Conseguir, NumeroCuenta);
+    public boolean Verificarcuenta(CrearCliente crearCliente){        
+        almacenar = crearCliente.ConseguirCuenta(NumeroCuenta);
         
-        System.out.println("El numero de cuenta es: " + almacenar);
+        System.out.println("El numero de cuenta recuperado es: " + almacenar);
+        System.err.println("---------------------------");
         
-        if (NumeroCuenta.equals(almacenar)){
-        return true;
-        }
-        return false;
+        return NumeroCuenta.equals(almacenar);
     }
 
 }

@@ -215,7 +215,7 @@ public class AperturarCuenta {
         //Creando el cliente nuevo. 
         Obclientes = new Cliente(
                 nombreCompleto,
-                ArCuentas,
+               
                 fechaNacimiento,
                 genero,
                 estadoCivil,
@@ -349,7 +349,7 @@ public class AperturarCuenta {
         //Creando el cliente nuevo. 
         Obclientes = new Cliente(
                 nombreCompleto,
-                ArCuentas,
+                
                 fechaNacimiento,
                 genero,
                 estadoCivil,
