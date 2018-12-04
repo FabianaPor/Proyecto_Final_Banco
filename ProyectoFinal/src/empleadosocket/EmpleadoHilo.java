@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import servidorsocket.ServidorHilo;
 
@@ -70,6 +71,8 @@ public class EmpleadoHilo extends Thread {
 
     // obtener flujos para enviar y recibir datos
     private void obtenerFlujos() throws IOException {
+
+        
         // establecer flujo de salida para los objetos que se envian al servidor
         salidaDatos = new ObjectOutputStream(socket.getOutputStream());
         salidaDatos.flush(); // vaciar buffer de salida para enviar informacion de encabezado

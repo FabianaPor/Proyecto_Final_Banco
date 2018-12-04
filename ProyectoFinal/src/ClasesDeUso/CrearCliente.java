@@ -6,6 +6,7 @@
 package ClasesDeUso;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
@@ -70,6 +71,7 @@ public class CrearCliente {
         String TIPOCUENTA = "AHORRO";
 
     public void CrearClientes(){
+        ArrayList<ArrayList<Cuenta>> ArrCuentas = new ArrayList<>();
         int N=0;
         System.out.println("¿Cuantos Clientes quiere Crear?: ");
         System.out.print("---------> ");
@@ -99,6 +101,7 @@ public class CrearCliente {
 
         //genero = entrada.next().charAt(0);
         genero = 'M';
+        
         //*****************************************
 
         //ingresando el estado civil del cliente
@@ -341,11 +344,9 @@ public class CrearCliente {
         System.out.println("Imprimiendo la informacion recien agregada: ");
         System.out.println("********************************************************");
         System.out.println(Obclientes.toString());
-        System.out.println(Obclientes.toString());
-        System.out.println(Obclientes.toString());
-        System.out.println(Obclientes.toString());
+
         System.out.println(cuentas.getNumeroCuenta());
-        System.out.println("****** Los datos del primer cliente es:  " + ArCuentas.get(1).getNumeroCuenta());
+        System.out.println("****** El numero de cuenta nuevo es:  " + ArCuentas.get(1).getNumeroCuenta());
         Hilos.add(Obclientes);
         Aclientes.add((Cliente) Hilos.get(1));
        
@@ -369,4 +370,83 @@ public class CrearCliente {
         }
         return cuenta;
     }
+
+    private String IntroducirFecha() throws IOException {
+        String fecha = "";
+        String dia, mes, anio;
+        int posicion;
+        int datodia, datomes, datoanio;
+        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+        do {
+            System.out.print("Ingrese La Fecha en este orden (dd/mm/aa):");
+            
+            fecha = teclado.readLine();
+            posicion = fecha.indexOf("-");
+            dia = fecha.substring(0, posicion);
+            fecha = fecha.substring(posicion + 1);
+            posicion = fecha.indexOf("-");
+            mes = fecha.substring(0, posicion);
+            fecha = fecha.substring(posicion + 1);
+            anio = fecha;
+            
+            datodia = Integer.parseInt(dia);
+            datomes = Integer.parseInt(mes);
+            datoanio = Integer.parseInt(anio);
+            
+            if (1 > datodia || datodia > 31 || 1 > datomes || datomes > 12 || 1900 > datoanio || datoanio > 2100) {
+                System.out.println("Fecha Incorrecta, Ingrese de nuevo la fecha");                
+            } else {
+                System.out.println("Fecha Correcta");
+                
+            }
+        } while (1 > datodia || datodia > 31 || 1 > datomes || datomes > 12 || 1900 > datoanio || datoanio > 2100);
+        return fecha;
+        
+    }
+    
+    private String EstadoCivil(Scanner entrada) {
+        
+        String estadoC = "s";
+        int temp;
+        do {
+            System.out.println("Ingrese el estado civil del cliente (ingrse el numero)"
+                    + "\n 1) = Soltero(a)"
+                    + "\n 2) = Casado(a)"
+                    + "\n 3) = Viudo(a)"
+                    + "\n 4) = Union libre"
+                    + "\n 5) = Divorsiado(a)");
+            
+            temp = entrada.nextInt();
+            
+            switch (temp) {
+                case 1:
+                    estadoC = "Soltero(a)";
+                    break;
+                case 2:
+                    estadoC = "Casado(a)";
+                    break;
+                case 3:
+                    estadoC = "Viudo(a)";
+                    break;
+                case 4:
+                    estadoC = "Union libre";
+                    break;
+                case 5:
+                    estadoC = "Divorsiado(a)";
+                    break;
+                default:
+                    System.out.println("No se reconoce ninguna la opcion. Ingrese una opcion valida");
+                    break;
+            }
+        } while (temp < 1 || temp > 5);
+        return estadoC;
+    }
+    
+    private String IngresarLineasDeInformacion(BufferedReader Renglon) throws IOException {
+        String Informacion;
+        Informacion = Renglon.readLine();
+        
+        return Informacion;
+    }
+     
 }
