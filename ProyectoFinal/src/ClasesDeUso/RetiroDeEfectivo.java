@@ -17,19 +17,25 @@ public class RetiroDeEfectivo extends CrearCliente{
     protected String NumeroCuenta="139785249872";
     
     public void Retirar(Scanner entrada, BufferedReader Renglon,CrearCliente crearClientes){
-        
+        int ciclo=1;
+        do{
         boolean verificar;
+        System.out.println("Ingrese El numero de cuenta que desea buscar");
+        System.out.print("---------> ");
+        NumeroCuenta = entrada.next();
         System.out.println("Ingrese su numero de cuenta para retirar: "
                 + "\n-----------> ");
         //NumeroCuenta = entrada.next();
         verificar = Verificarcuenta(crearClientes);
-       
+        ciclo = 1;
         if(verificar==true){
             System.out.println("Si existe la cuenta");
+            RetirarMonto();
         }else{
-            System.out.println("Cuenta no existente");
+            System.out.println("Cuenta no existente, ingrese otro numero de cuenta");
+            ciclo = 2;
         }
-    
+    }while(ciclo!=1);
     }
     
     
@@ -41,6 +47,10 @@ public class RetiroDeEfectivo extends CrearCliente{
         System.err.println("---------------------------");
         
         return NumeroCuenta.equals(almacenar);
+    }
+
+    private void RetirarMonto() {
+  
     }
 
 }

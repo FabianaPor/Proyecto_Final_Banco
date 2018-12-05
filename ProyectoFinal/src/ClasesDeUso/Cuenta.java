@@ -22,8 +22,7 @@ public class Cuenta {
         this.Monto = Monto;
     }
 
-    Cuenta() {
-      }
+   
 
     @Override
     public String toString() {

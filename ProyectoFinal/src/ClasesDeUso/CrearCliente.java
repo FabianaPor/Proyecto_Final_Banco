@@ -21,17 +21,17 @@ public class CrearCliente {
 
     //Datos del cliente
     //ArrayList
-    private ArrayList<Cliente> Arrclientes = new ArrayList<Cliente>();
-    private ArrayList<Beneficiario> beneficiarios = new ArrayList<Beneficiario>();
+    private ArrayList<Cliente> Arclientes = new ArrayList<Cliente>();
+    private ArrayList<Beneficiario> ArBeneficiarios = new ArrayList<Beneficiario>();
     public ArrayList<ArrayList<Cuenta>> ArrCuentas = new ArrayList<>();
     //objetos
     private Cliente Obclientes;
     private Beneficiario ObBeneficiarios = new Beneficiario();
-    private ArrayList<Cliente> Aclientes = new ArrayList<Cliente>();
-    public ArrayList<Cuenta> ArCuentas = new ArrayList<Cuenta>();
+    private ArrayList<Cliente> Aclientes = new ArrayList<>();
+    
     static ArrayList<Thread> Hilos = new ArrayList<Thread>();
     //protected Cuenta numeroCuenta = new Cuenta();
-    protected Cuenta cuentas = new Cuenta();
+    protected Cuenta cuentas;
     //protected Cuenta Descripcion = new Cuenta();
 
     //Variables
@@ -41,6 +41,7 @@ public class CrearCliente {
 
     protected String fechaNacimiento;
     protected char genero;
+    protected String auxS; 
     protected String estadoCivil;
     protected int telefono;
     protected String direccion;
@@ -61,7 +62,7 @@ public class CrearCliente {
 
     //Clases
     //ArrayLis
-    ArrayList<AperturarCuenta> Arrapertura = new ArrayList<AperturarCuenta>();
+   
     //Objetos
     AperturarCuenta OBJapertura = new AperturarCuenta();
 
@@ -70,39 +71,35 @@ public class CrearCliente {
 
     public String CrearClientes(String almacenador) {
         if(almacenador.equals("1")){
-                System.out.println("ClasesDeUso.CrearCliente.CrearClientes()");
-
+                System.out.println("Iniciando proceso de creacion de Cliente");
                 int N = 0;
                 System.out.println("¿Cuantos Clientes quiere Crear?: ");
                 System.out.print("---------> ");
                 N = entrada.nextInt();
 
                 for (int I = 0; I < N; I++) {
-                    System.out.println("Entrando a Cuenta No existente.");
-                    //Datos = entrada.next();
+                    System.out.println("Inciando Creacion de Clientes");
+
                     //Introduciendo los datos del cliente
                     System.out.println("Ingrese el nombre del cliente: \n");
                     //nombreCompleto = Renglon.readLine();
                     nombreCompleto = "Edwin Olivera";
-                    //Creando el numero de cuento
-                    System.out.println("Ingrese el numero de cliente: \n");
-                    //numeroCuenta = NumeroDeCuenta();
-                    cuentas.setNumeroCuenta("139785249872");
-
-                    cuentas.setMonto(2934);
 
                     //*****************************
                     //Introduciendo la fecha
                     //fechaNacimiento = IntroducirFecha();
                     fechaNacimiento = "10-09-1995";
                     //*****************************************
+                   
 
                     //Ingresando el Genero del cliente
+                  
                     System.out.println("Ingrese el genero del cliente; M o F");
-
                     //genero = entrada.next().charAt(0);
-                    genero = 'M';
-
+                    
+                    genero = 'M';//Crear funcion para que ingrese solo los generos permitidos
+                    
+                    
                     //*****************************************
                     //ingresando el estado civil del cliente
                     System.out.println("Ingrese el estado civil del cliente");
@@ -113,7 +110,7 @@ public class CrearCliente {
                     //Ingresando el telefono del cliente
                     System.out.println("Ingrese el numero telefonico");
                     telefono = 1231232;
-                    //telefono = entrada.nextInt();
+                    //telefono = entrada.nextInt();//Crear metodo para que entre el numero de forma xxxx-xxxx
                     //*****************************************
 
                     //Ingresando la direccion
@@ -128,55 +125,26 @@ public class CrearCliente {
                     //lugarDeTrabajo = IngresarLineasDeInformacion(Renglon);
                     //*****************************************
 
+                   do{
                     //Ingresando el salario actual
                     System.out.println("Ingrese el salario promedio actual de Trabajo: ");
                     salarioPromedio = 1234;
-                    //         salarioPromedio = entrada.nextInt();
+                    //salarioPromedio = entrada.nextInt();
                     //*****************************************
-
-                    //Ingresando el porque abrira la cuenta de banco
-                    System.out.println("Ingrese el porque desea  abrir la cuenta de banco: ");
-                    cuentas.setDescripcion("sflndfoindfoin");
-                    //Descripcion = IngresarLineasDeInformacion(Renglon);
-                    //*****************************************
-
-                    //Ingresando al beneficiario
-                    System.out.println("Ingrese datos del beneficiario: ");
-                    System.out.println("Ingrese el nombre");
-                    String Datos1;
-                    char opcion1;
-                    Datos1 = "Mario";
-
-                    cuentas.setBeneficiarios(Datos1);
-                    /*
-                    //Datos1 = Renglon.readLine();
-                    ObBeneficiarios.setNombre(Datos1);
-                    System.out.println("Ingrese la fecha de nacimiento");
-
-                    Datos1 = "31-10-1996";
-                    //Datos1 = Renglon.readLine();
-                    ObBeneficiarios.setFechaDeNacimiento(Datos1);
-
-                    System.out.println("Ingrese Genero");
-                    opcion1 = 'M';
-                    //opcion1 = entrada.next().charAt(0);
-                    ObBeneficiarios.setGenero(opcion1);
-
-                    beneficiarios.add(ObBeneficiarios);
-                    cuentas.setBeneficiarios(ObBeneficiarios);
-                    System.out.println(beneficiarios.size());
-                    //*****************************************
-                     */
+                    }while(salarioPromedio<=0 || salarioPromedio>999999);
+                   
+                    String opcion1;
+                   
                     System.out.println("Ingrese La sucursal donde abrira la cuenta");
-                    Datos1 = "Intibuca";
-                    sucursales = Datos1;
-                    //sucursales = entrada.next();
+                    opcion1 = "Intibuca";
+                    sucursales = opcion1;
+                    //sucursales = entrada.next();//Crear Funcion para introducir la sucursal
                     validarCuenta = 1;
                     Monto = 1500;
-                    ArCuentas.add(cuentas);//Primero de cuenta
-                    ArrCuentas.add(0,ArCuentas);//Agregando Segundo ArrayList.
+                   
+                    ArrCuentas.add(CrearArrayListCuenta());//Agregando Segundo ArrayList.
                     System.out.println("Crecimiento del ArrayList Mayor: " +ArrCuentas.size());
-                    ArrCuentas.get(0).get(0);
+                   
                     System.out.println("******El numero de cuenta del primer cliente es:  " + ArrCuentas.get(0).get(0).getNumeroCuenta());
                     
                     //Creando el cliente nuevo. 
@@ -191,27 +159,7 @@ public class CrearCliente {
                             salarioPromedio,
                             validarCuenta,
                             Monto,
-                            sucursales);
-
-                    /*
-                    System.out.println("1)------: " + Arrclientes.size());
-                    System.out.println("------------------------------------------------------------");
-                    System.out.println("2)------: " + Obclientes.getNombreCompleto());
-                    //Descripsion del porque
-                    //realizar el numero de cuenta
-                    //Beneficiario
-
-                        Nombre completo
-                        genero
-                        fecha de nacimiento
-                        #telefono
-
-                    System.out.println("Imprimiendo la informacion recien agregada: ");
-                    System.out.println("********************************************************");
-                    System.out.println(Obclientes.toString());*/
-
-                   
-                    
+                            sucursales);  
                 }
               }  
             if(almacenador.equals("2")){
@@ -353,42 +301,47 @@ public class CrearCliente {
         String Conseguido;
         String Conseguir;
         Conseguido = NumeroCuenta;
-        System.out.println("El tamaño del ArrayList mayor es: " +  ArrCuentas.size());
-        System.out.println("El tamaño del ArrayList interno es: " + ArrCuentas.get(0).size());
-        for(int filas=0; filas < ArrCuentas.size(); filas++){
-            for(int columnas=0; columnas< ArrCuentas.get(filas).size(); columnas++){
-                System.err.println("+´+´+´+´+´+´+´+´}{}{}{}}}}{}}{}´+´+´+´+´´++"  );
-                System.out.println(ArrCuentas.get(filas).get(columnas));
-            }
-        
-        }
-        
         for (int fila = 0; fila < ArrCuentas.size(); fila++) {
             for (int columnas = 0; columnas < ArrCuentas.get(fila).size(); columnas++) {
-                //clientes.add((Cliente) Hilos.get(I));
-                System.out.println("-----");
-                System.out.println(ArrCuentas.get(fila).get(columnas).getNumeroCuenta());
-                System.out.println("-----");
-
                 Conseguir = ArrCuentas.get(fila).get(columnas).getNumeroCuenta();
-                //Conseguir = "¬¬¬¬¬¬¬¬";
-                System.out.println("La variable Conseguir es: " + Conseguir);
-                System.out.println("La variable NumeroCuenta es: " + NumeroCuenta);
                 System.out.println(ArrCuentas.get(fila).get(columnas));
                 if (NumeroCuenta.equals(Conseguir)) {
-                    System.out.println("*************************************************");
                     return Conseguido;
                 }
             }
 
         }
-        System.err.println("-----");
-
-        System.err.println("-----");
-        // Conseguir = Aclientes.get(I).getCuentas().getNume
         Conseguido = "No se encontro el numero de cuenta";
-
         return Conseguido;
+    }
+
+    
+
+    private ArrayList<Cuenta> CrearArrayListCuenta() {
+        ArrayList<Cuenta> ArCuentas = new ArrayList<>();
+        int Crear;
+        String numeroCuenta;
+        String Descripcion;
+        String beneficiarios;
+        int Monto;
+        System.out.println("¿Cuentas Cuentas desea crea?");
+        System.out.print("---------> ");
+        Crear = entrada.nextInt();
+        
+        for(int Cuentas=0; Cuentas < Crear; Cuentas++){
+            //Falta implementar metodos de creacio de datos, adecuados
+        System.out.println("Ingrese el porque desea  abrir la cuenta de banco: ");
+        numeroCuenta = "139785249872";
+        Descripcion = "Para tener un ahorro a futuro";
+        beneficiarios = "Mario";
+        Monto = 1000;
+        cuentas = new Cuenta(
+                numeroCuenta, 
+                Descripcion, 
+                beneficiarios, Monto);
+        ArCuentas.add(cuentas);
+        }
+       return ArCuentas;
     }
 
 }

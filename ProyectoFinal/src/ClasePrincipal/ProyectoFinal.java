@@ -49,7 +49,7 @@ public class ProyectoFinal {
             String TIPOCUENTA = "AHORRO";
             
     //menu
-    
+            do{//Para que se muestre el menu cada vez que se termina una opcion
         System.out.println("Selecciones lo que desea hacer "
                 + "\n 1) Apertura de Cuenta Bancaria"
                 + "\n 2) Retiro de efectivo"
@@ -59,7 +59,9 @@ public class ProyectoFinal {
                 + "\n 6) Imprimir información de clientes"
                 + "\n 7) Salir");
         System.out.println("");
-   do{
+   
+
+        do{
         
         opcion = 2;
         //opcion = entrada.nextInt();
@@ -75,7 +77,7 @@ public class ProyectoFinal {
                 break;
             case 2:
                 //Retiro de efectivo
-                RETORNADO = crearClientes.CrearClientes(almacenador);//Creando los clientes de forma automatica
+                //RETORNADO = crearClientes.CrearClientes(almacenador);//Creando los clientes de forma automatica
                 ObjRetiro.Retirar(entrada, Renglon, crearClientes);
                 break;
             case 3:
@@ -96,7 +98,7 @@ public class ProyectoFinal {
                 break;
         }
         
-            
+     }while(opcion < 1 || opcion > 7);       
     }
   }
     

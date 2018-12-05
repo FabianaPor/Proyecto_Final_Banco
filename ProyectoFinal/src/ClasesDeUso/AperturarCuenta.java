@@ -22,7 +22,7 @@ public class AperturarCuenta {
     private ArrayList<Cuenta> ArCuentas = new ArrayList<Cuenta>();
     static ArrayList<Thread> Hilos = new ArrayList<Thread>();
     //protected Cuenta numeroCuenta = new Cuenta();
-    protected Cuenta cuentas = new Cuenta();
+    //protected Cuenta cuentas = new Cuenta();
     //protected Cuenta Descripcion = new Cuenta();
 
     //Variables
@@ -121,8 +121,7 @@ public class AperturarCuenta {
         //Creando el numero de cuento
         System.out.println("Ingrese el numero de cliente: \n");
         //numeroCuenta = NumeroDeCuenta();
-        cuentas.setNumeroCuenta("139785249872");
-        cuentas.setMonto(2934);
+       
 
         //*****************************
         //Introduciendo la fecha
@@ -169,7 +168,6 @@ public class AperturarCuenta {
 
         //Ingresando el porque abrira la cuenta de banco
         System.out.println("Ingrese el porque desea  abrir la cuenta de banco: ");
-        cuentas.setDescripcion("sflndfoindfoin");
         //Descripcion = IngresarLineasDeInformacion(Renglon);
         //*****************************************
 
@@ -180,7 +178,6 @@ public class AperturarCuenta {
         char opcion1;
         Datos1 = "Mario";
         
-        cuentas.setBeneficiarios(Datos1);
         /*
         //Datos1 = Renglon.readLine();
         ObBeneficiarios.setNombre(Datos1);
@@ -206,7 +203,6 @@ public class AperturarCuenta {
         //sucursales = entrada.next();
         validarCuenta = 1;
         Monto = 1500;
-        ArCuentas.add(cuentas);
         System.out.println("****** Los datos del primer cliente es:  " + ArCuentas.get(0).getNumeroCuenta());
 
         
@@ -257,7 +253,6 @@ public class AperturarCuenta {
         //Creando el numero de cuento
         System.out.println("Ingrese el numero de cliente: \n");
         //numeroCuenta = NumeroDeCuenta();
-        cuentas.setNumeroCuenta(NumeroDeCuenta());
 
         //*****************************
         //Introduciendo la fecha
@@ -304,7 +299,6 @@ public class AperturarCuenta {
 
         //Ingresando el porque abrira la cuenta de banco
         System.out.println("Ingrese el porque desea  abrir la cuenta de banco: ");
-        cuentas.setDescripcion("sflndfoindfoin");
         //Descripcion = IngresarLineasDeInformacion(Renglon);
         //*****************************************
 
@@ -314,7 +308,6 @@ public class AperturarCuenta {
         
         Datos1 = "Mario";
         
-        cuentas.setBeneficiarios(Datos1);
         /*
         //Datos1 = Renglon.readLine();
         ObBeneficiarios.setNombre(Datos1);
@@ -341,8 +334,7 @@ public class AperturarCuenta {
 
         validarCuenta = 0;
         Monto = 100;
-        ArCuentas.add(cuentas);
-
+       
         
         
 
@@ -380,7 +372,6 @@ public class AperturarCuenta {
         System.out.println(Obclientes.toString());
         System.out.println(Obclientes.toString());
         System.out.println(Obclientes.toString());
-        System.out.println(cuentas.getNumeroCuenta());
         System.out.println("****** Los datos del primer cliente es:  " + ArCuentas.get(1).getNumeroCuenta());
         Hilos.add(Obclientes);
         Aclientes.add((Cliente) Hilos.get(1));
@@ -485,7 +476,6 @@ public class AperturarCuenta {
         Aclientes.add((Cliente) Hilos.get(I));
          System.out.println("-----");
        // Conseguir = Aclientes.get(I).getCuentas().getNumeroCuenta();
-         Conseguir = Aclientes.get(I).getAcuentas().get(I).getNumeroCuenta();
             System.out.println("La variable Conseguir es: " + Conseguir );
             System.out.println("La variable NumeroCuenta es: " + NumeroCuenta );
             System.out.println(Aclientes.get(I));

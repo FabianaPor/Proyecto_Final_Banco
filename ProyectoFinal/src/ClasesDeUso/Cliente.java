@@ -5,9 +5,7 @@ import java.util.ArrayList;
 public class Cliente extends Thread {
 
     private String nombreCompleto;
-   // private Cuenta cuentas;
- private ArrayList<Cuenta> Acuentas;
-    // private Cuenta numeroCuenta;
+    
     private String fechaNacimiento;
     private char genero;
     private String estadoCivil;
@@ -17,13 +15,11 @@ public class Cliente extends Thread {
     private double salarioPromedio;
     private int validarCuenta;
     private int Monto;
-    //  private Cuenta Descripcion;
-    //  private ArrayList<Beneficiario> beneficiarios;
     private String sucursales;
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombreCompleto=" + nombreCompleto + ", Acuentas=" + Acuentas + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", telefono=" + telefono + ", direccion=" + direccion + ", lugarDeTrabajo=" + lugarDeTrabajo + ", salarioPromedio=" + salarioPromedio + ", validarCuenta=" + validarCuenta + ", Monto=" + Monto + ", sucursales=" + sucursales + '}';
+        return "Cliente{" + "nombreCompleto=" + nombreCompleto + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", telefono=" + telefono + ", direccion=" + direccion + ", lugarDeTrabajo=" + lugarDeTrabajo + ", salarioPromedio=" + salarioPromedio + ", validarCuenta=" + validarCuenta + ", Monto=" + Monto + ", sucursales=" + sucursales + '}';
     }
 
     public Cliente(String nombreCompleto, 
@@ -66,20 +62,7 @@ public class Cliente extends Thread {
         this.nombreCompleto = nombreCompleto;
     }
 
-    /**
-     * @return the Acuentas
-     */
-    public ArrayList<Cuenta> getAcuentas() {
-        return Acuentas;
-    }
-
-    /**
-     * @param Acuentas the Acuentas to set
-     */
-    public void setAcuentas(ArrayList<Cuenta> Acuentas) {
-        this.Acuentas = Acuentas;
-    }
-
+ 
     /**
      * @return the fechaNacimiento
      */
