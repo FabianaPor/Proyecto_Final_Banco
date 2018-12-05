@@ -1,6 +1,6 @@
 package ClasesDeUso;
 
-import java.util.ArrayList;
+
 
 public class Cliente extends Thread {
 
@@ -110,7 +110,7 @@ public class Cliente extends Thread {
         this.ID = ID;
     }
 
-    public Cliente(String nombreCompleto, String fechaNacimiento, char genero, String estadoCivil, int telefono, String direccion, String lugarDeTrabajo, double salarioPromedio, int validarCuenta, String sucursales, String ID) {
+    public Cliente(String nombreCompleto, String fechaNacimiento, char genero, String estadoCivil, String telefono, String direccion, String lugarDeTrabajo, double salarioPromedio, int validarCuenta, String sucursales, String ID) {
         this.nombreCompleto = nombreCompleto;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;

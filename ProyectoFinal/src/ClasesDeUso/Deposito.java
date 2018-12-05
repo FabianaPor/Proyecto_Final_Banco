@@ -8,28 +8,48 @@ package ClasesDeUso;
 import java.io.BufferedReader;
 import java.util.Scanner;
 
-  
-public class RetiroDeEfectivo extends CrearCliente{
-   
-    
+/**
+ *
+ * @author Magally Portillo
+ */
+public class Deposito {
+        
     protected String almacenar;
     protected String Conseguir;
-    protected String NumeroCuenta="139785249872";
+    protected String NumeroCuenta;
+    Scanner entrada = new Scanner(System.in);
     
-    public void Retirar(Scanner entrada, BufferedReader Renglon,CrearCliente crearClientes){
+    public void Depositar(Scanner entrada, BufferedReader Renglon,CrearCliente crearClientes){
         int ciclo=1;
         do{
         boolean verificar;
         System.out.println("Ingrese El numero de cuenta que desea buscar");
         System.out.print("---------> ");
         NumeroCuenta = entrada.next();
-        
- 
+        verificar = Verificarcuenta(crearClientes);
+        ciclo = 1;
+        if(verificar==true){
+            System.out.println("****** Si existe la cuenta ******");
+            crearClientes.RealizarDeposito(NumeroCuenta);
+        }else{
+            System.out.println("Cuenta no existente, ingrese otro numero de cuenta");
+            ciclo = 2;
+        }
+    }while(ciclo!=1);
+    }
+     public void RealizarDepositoCuenta(int ConseguirMonto1, CrearCliente crearClientes) {
+    
+    int ciclo=1;
+        do{
+        boolean verificar;
+        System.out.println("Ingrese El numero de cuenta que desea buscar para realizar la transferencia");
+        System.out.print("---------> ");
+        NumeroCuenta = entrada.next();
         verificar = Verificarcuenta(crearClientes);
         ciclo = 1;
         if(verificar==true){
             System.out.println("Si existe la cuenta");
-            crearClientes.RealizarRetiro(NumeroCuenta);
+            crearClientes.RealizarDepositoACuenta(NumeroCuenta, ConseguirMonto1);
         }else{
             System.out.println("Cuenta no existente, ingrese otro numero de cuenta");
             ciclo = 2;
@@ -37,35 +57,13 @@ public class RetiroDeEfectivo extends CrearCliente{
     }while(ciclo!=1);
     }
     
-    public int ConseguirMontoCuentaDeRetiro(CrearCliente crearClientes){
-    int MontoConseguido=0;
-    int ciclo=1;
-        do{
-        boolean verificar;
-        System.out.println("Ingrese El numero de cuenta que desea buscar para realizar la transferencia");
-        System.out.print("---------> ");
-        NumeroCuenta = entrada.next();
-        
- 
-        verificar = Verificarcuenta(crearClientes);
-        ciclo = 1;
-        if(verificar==true){
-            System.out.println("**** Si existe la cuenta *****");
-            MontoConseguido = crearClientes.ConseguirMonto(NumeroCuenta);
-        }else{
-            System.out.println("Cuenta no existente, ingrese otro numero de cuenta");
-            ciclo = 2;
-        }
-    }while(ciclo!=1);
-    return MontoConseguido;
-    }
+    
    
     public boolean Verificarcuenta(CrearCliente crearCliente){        
         almacenar = crearCliente.ConseguirCuenta(NumeroCuenta);
         crearCliente.ConseguirCuenta(NumeroCuenta);
-        
-        
         return NumeroCuenta.equals(almacenar);
-    }    
+    }
+
 
 }

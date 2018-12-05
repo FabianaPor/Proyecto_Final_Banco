@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package empleadosocket;
 
 import ClasePrincipal.ProyectoFinal;
@@ -25,7 +22,7 @@ public class EmpleadoHilo extends Thread {
     protected Socket socket;
     protected ObjectOutputStream salidaDatos;
     protected ObjectInputStream entradaDatos;
-     ArrayList<Empleado> ArEmpleados = new ArrayList<Empleado>();
+    ArrayList<Empleado> ArEmpleados = new ArrayList<Empleado>();
 
     public EmpleadoHilo() {
     }
@@ -71,7 +68,6 @@ public class EmpleadoHilo extends Thread {
     // obtener flujos para enviar y recibir datos
     private void obtenerFlujos() throws IOException {
 
-        
         // establecer flujo de salida para los objetos que se envian al servidor
         salidaDatos = new ObjectOutputStream(socket.getOutputStream());
         salidaDatos.flush(); // vaciar buffer de salida para enviar informacion de encabezado
@@ -89,21 +85,23 @@ public class EmpleadoHilo extends Thread {
         do { // procesar mensajes recibidos del servidor
             // leer mensaje y mostrarlo en pantalla
             try {
+                String empleadoABuscar;
                 mostrarMensaje("Estos son los ID de los empleados");
                 CrearEmpleados(ArEmpleados);
                 System.out.println("\n------------------------------------------\n");
                 mostrarMensaje("Escriba le ID de los empleados");
-                
-               enviarMensaje(sc.nextLine());
-               mensajeRespuesta = (String) entradaDatos.readObject();
-               
-                if(mensajeRespuesta.equals("Encontrado")){
+                empleadoABuscar = sc.nextLine();
+                enviarMensaje(empleadoABuscar);
+                mensajeRespuesta = (String) entradaDatos.readObject();
+
+                if (mensajeRespuesta.equals("Encontrado")) {
+                    String empleado;
+                    empleado = ConseguirEmpleado(empleadoABuscar);
                     mostrarMensaje("Empleado Encontrado");
                     ProyectoFinal principal = new ProyectoFinal();
-                    principal.Ejecutar();
+                    principal.Ejecutar(empleado);
                 }
-                
-                
+
             } // atrapar los problemas que pueden ocurrir al leer del servidor
             catch (ClassNotFoundException excepcionClaseNoEncontrada) {
                 mostrarMensaje("\nSe recibio un objeto de tipo desconocido, el error es: "
@@ -141,60 +139,73 @@ public class EmpleadoHilo extends Thread {
     private void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
     }
-    
-    public void CrearEmpleados(ArrayList ArEmpleados){
+
+    public void CrearEmpleados(ArrayList ArEmpleados) {
         Empleado empleados;
-       
-        
+
         String Nombre;
         String ID;
         String Sucursal;
-        
+
         //Primer Empleado
         Nombre = "Celena Valle";
         ID = "1501";
-        Sucursal ="SPS";
-        
+        Sucursal = "SPS";
+
         empleados = new Empleado(Nombre, ID, Sucursal);
         ArEmpleados.add(empleados);
-        
+
         //Segundo Empleado
         Nombre = "Mario Olivera";
         ID = "1801";
-        Sucursal ="Intibuca";
-        
+        Sucursal = "Intibuca";
+
         empleados = new Empleado(Nombre, ID, Sucursal);
         ArEmpleados.add(empleados);
-        
+
         //Tercer Empleado
         Nombre = "Emerson Lagos";
         ID = "0914";
-        Sucursal ="Tegucigalpa";
-        
+        Sucursal = "Tegucigalpa";
+
         empleados = new Empleado(Nombre, ID, Sucursal);
         ArEmpleados.add(empleados);
-        
+
         //Cuarto Empleado
         Nombre = "Karen Maradiaga";
         ID = "1890";
-        Sucursal ="La Ceiba";
-        
+        Sucursal = "La Ceiba";
+
         empleados = new Empleado(Nombre, ID, Sucursal);
         ArEmpleados.add(empleados);
         MostrarEmpleados(ArEmpleados);
-        
+
     }
-    
-    private void MostrarEmpleados(ArrayList ArEmpleados){
+
+    private void MostrarEmpleados(ArrayList ArEmpleados) {
         System.out.println("ID del Primer empleado es: " + ArEmpleados.get(0));
         System.out.println("ID del Segundo empleado es: " + ArEmpleados.get(1));
         System.out.println("ID del Tercer empleado es: " + ArEmpleados.get(2));
         System.out.println("ID del Cuarto empleado es: " + ArEmpleados.get(3));
-    
+
     }
 
     @Override
     public void run() {
         ejecutarCliente();
+    }
+
+    private String ConseguirEmpleado(String empleadoABuscar) {
+        String EmpleadoEncontrado = "";
+        String IDEmpleado;
+
+        for (int BuscarEmpleado = 0; BuscarEmpleado < ArEmpleados.size(); BuscarEmpleado++) {
+            IDEmpleado = ArEmpleados.get(BuscarEmpleado).getIdentificacion();
+            if (empleadoABuscar.equals(IDEmpleado)) {
+                EmpleadoEncontrado = ArEmpleados.get(BuscarEmpleado).getNombre();
+                return EmpleadoEncontrado;
+            }
+        }
+        return EmpleadoEncontrado;
     }
 }
