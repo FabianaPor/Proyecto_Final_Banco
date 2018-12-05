@@ -16,14 +16,111 @@ public class Cliente extends Thread {
     private int validarCuenta;
     private int Monto;
     private String sucursales;
+    private String ID;
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombreCompleto=" + nombreCompleto + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", telefono=" + telefono + ", direccion=" + direccion + ", lugarDeTrabajo=" + lugarDeTrabajo + ", salarioPromedio=" + salarioPromedio + ", validarCuenta=" + validarCuenta + ", Monto=" + Monto + ", sucursales=" + sucursales + '}';
+        return "Cliente{" + "nombreCompleto=" + nombreCompleto + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", telefono=" + telefono + ", direccion=" + direccion + ", lugarDeTrabajo=" + lugarDeTrabajo + ", salarioPromedio=" + salarioPromedio + ", validarCuenta=" + validarCuenta + ", Monto=" + Monto + ", sucursales=" + sucursales + ", ID=" + ID + '}';
     }
 
-    public Cliente(String nombreCompleto, 
-            
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public char getGenero() {
+        return genero;
+    }
+
+    public void setGenero(char genero) {
+        this.genero = genero;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getLugarDeTrabajo() {
+        return lugarDeTrabajo;
+    }
+
+    public void setLugarDeTrabajo(String lugarDeTrabajo) {
+        this.lugarDeTrabajo = lugarDeTrabajo;
+    }
+
+    public double getSalarioPromedio() {
+        return salarioPromedio;
+    }
+
+    public void setSalarioPromedio(double salarioPromedio) {
+        this.salarioPromedio = salarioPromedio;
+    }
+
+    public int getValidarCuenta() {
+        return validarCuenta;
+    }
+
+    public void setValidarCuenta(int validarCuenta) {
+        this.validarCuenta = validarCuenta;
+    }
+
+    public int getMonto() {
+        return Monto;
+    }
+
+    public void setMonto(int Monto) {
+        this.Monto = Monto;
+    }
+
+    public String getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(String sucursales) {
+        this.sucursales = sucursales;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public Cliente(
+            String nombreCompleto, 
             String fechaNacimiento, 
             char genero, 
             String estadoCivil, 
@@ -33,9 +130,9 @@ public class Cliente extends Thread {
             double salarioPromedio, 
             int validarCuenta, 
             int Monto, 
-            String sucursales) {
+            String sucursales, 
+            String ID) {
         this.nombreCompleto = nombreCompleto;
-      
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
         this.estadoCivil = estadoCivil;
@@ -46,162 +143,7 @@ public class Cliente extends Thread {
         this.validarCuenta = validarCuenta;
         this.Monto = Monto;
         this.sucursales = sucursales;
+        this.ID = ID;
     }
 
-    /**
-     * @return the nombreCompleto
-     */
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    /**
-     * @param nombreCompleto the nombreCompleto to set
-     */
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
- 
-    /**
-     * @return the fechaNacimiento
-     */
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    /**
-     * @param fechaNacimiento the fechaNacimiento to set
-     */
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    /**
-     * @return the genero
-     */
-    public char getGenero() {
-        return genero;
-    }
-
-    /**
-     * @param genero the genero to set
-     */
-    public void setGenero(char genero) {
-        this.genero = genero;
-    }
-
-    /**
-     * @return the estadoCivil
-     */
-    public String getEstadoCivil() {
-        return estadoCivil;
-    }
-
-    /**
-     * @param estadoCivil the estadoCivil to set
-     */
-    public void setEstadoCivil(String estadoCivil) {
-        this.estadoCivil = estadoCivil;
-    }
-
-    /**
-     * @return the telefono
-     */
-    public int getTelefono() {
-        return telefono;
-    }
-
-    /**
-     * @param telefono the telefono to set
-     */
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    /**
-     * @return the direccion
-     */
-    public String getDireccion() {
-        return direccion;
-    }
-
-    /**
-     * @param direccion the direccion to set
-     */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    /**
-     * @return the lugarDeTrabajo
-     */
-    public String getLugarDeTrabajo() {
-        return lugarDeTrabajo;
-    }
-
-    /**
-     * @param lugarDeTrabajo the lugarDeTrabajo to set
-     */
-    public void setLugarDeTrabajo(String lugarDeTrabajo) {
-        this.lugarDeTrabajo = lugarDeTrabajo;
-    }
-
-    /**
-     * @return the salarioPromedio
-     */
-    public double getSalarioPromedio() {
-        return salarioPromedio;
-    }
-
-    /**
-     * @param salarioPromedio the salarioPromedio to set
-     */
-    public void setSalarioPromedio(double salarioPromedio) {
-        this.salarioPromedio = salarioPromedio;
-    }
-
-    /**
-     * @return the validarCuenta
-     */
-    public int getValidarCuenta() {
-        return validarCuenta;
-    }
-
-    /**
-     * @param validarCuenta the validarCuenta to set
-     */
-    public void setValidarCuenta(int validarCuenta) {
-        this.validarCuenta = validarCuenta;
-    }
-
-    /**
-     * @return the Monto
-     */
-    public int getMonto() {
-        return Monto;
-    }
-
-    /**
-     * @param Monto the Monto to set
-     */
-    public void setMonto(int Monto) {
-        this.Monto = Monto;
-    }
-
-    /**
-     * @return the sucursales
-     */
-    public String getSucursales() {
-        return sucursales;
-    }
-
-    /**
-     * @param sucursales the sucursales to set
-     */
-    public void setSucursales(String sucursales) {
-        this.sucursales = sucursales;
-    }
-
-   
 }
