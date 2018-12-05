@@ -9,18 +9,17 @@ public class Cliente extends Thread {
     private String fechaNacimiento;
     private char genero;
     private String estadoCivil;
-    private int telefono;
+    private String telefono;
     private String direccion;
     private String lugarDeTrabajo;
     private double salarioPromedio;
     private int validarCuenta;
-    private int Monto;
     private String sucursales;
     private String ID;
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombreCompleto=" + nombreCompleto + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", telefono=" + telefono + ", direccion=" + direccion + ", lugarDeTrabajo=" + lugarDeTrabajo + ", salarioPromedio=" + salarioPromedio + ", validarCuenta=" + validarCuenta + ", Monto=" + Monto + ", sucursales=" + sucursales + ", ID=" + ID + '}';
+        return "Cliente{" + "nombreCompleto=" + nombreCompleto + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", estadoCivil=" + estadoCivil + ", telefono=" + telefono + ", direccion=" + direccion + ", lugarDeTrabajo=" + lugarDeTrabajo + ", salarioPromedio=" + salarioPromedio + ", validarCuenta=" + validarCuenta + ", sucursales=" + sucursales + ", ID=" + ID + '}';
     }
 
     public String getNombreCompleto() {
@@ -55,11 +54,11 @@ public class Cliente extends Thread {
         this.estadoCivil = estadoCivil;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -95,14 +94,6 @@ public class Cliente extends Thread {
         this.validarCuenta = validarCuenta;
     }
 
-    public int getMonto() {
-        return Monto;
-    }
-
-    public void setMonto(int Monto) {
-        this.Monto = Monto;
-    }
-
     public String getSucursales() {
         return sucursales;
     }
@@ -119,19 +110,7 @@ public class Cliente extends Thread {
         this.ID = ID;
     }
 
-    public Cliente(
-            String nombreCompleto, 
-            String fechaNacimiento, 
-            char genero, 
-            String estadoCivil, 
-            int telefono, 
-            String direccion, 
-            String lugarDeTrabajo, 
-            double salarioPromedio, 
-            int validarCuenta, 
-            int Monto, 
-            String sucursales, 
-            String ID) {
+    public Cliente(String nombreCompleto, String fechaNacimiento, char genero, String estadoCivil, int telefono, String direccion, String lugarDeTrabajo, double salarioPromedio, int validarCuenta, String sucursales, String ID) {
         this.nombreCompleto = nombreCompleto;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
@@ -141,7 +120,6 @@ public class Cliente extends Thread {
         this.lugarDeTrabajo = lugarDeTrabajo;
         this.salarioPromedio = salarioPromedio;
         this.validarCuenta = validarCuenta;
-        this.Monto = Monto;
         this.sucursales = sucursales;
         this.ID = ID;
     }
